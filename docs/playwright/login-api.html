@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login API</title>
+  <meta charset="utf-8">
+  <title>Login API</title>
 </head>
 <body>
 
 <h1>Login API</h1>
 
 <p>Primera documentación generada.</p>
+
+<h2>Objetivo</h2>
+<p>Aprender a localizar elementos correctamente y documentar los selectores útiles para pruebas automatizadas con Playwright.</p>
+
+<h2>Selectores</h2>
+<ul>
+  <li>
+    <strong>getByRole('button', { name: 'Ingresar' })</strong>
+    <p>Propósito: Selecciona el botón por su rol accesible y texto visible. Recomendado por su estabilidad y alineación con la experiencia del usuario.</p>
+  </li>
+  <li>
+    <strong>page.locator('.button').first()</strong>
+    <p>Propósito: Selecciona el primer elemento que coincide con la clase <em>.button</em>. Útil cuando existen múltiples coincidencias.</p>
+  </li>
+  <li>
+    <strong>page.locator()</strong>
+    <p>Propósito: Selector genérico que acepta CSS o XPath. Preferir selectores más específicos cuando sea posible.</p>
+  </li>
+</ul>
+
+<h2>Estrategia Playwright</h2>
+<ul>
+  <li>Priorizar `getByRole()` y selectores basados en accesibilidad cuando estén disponibles.</li>
+  <li>Evitar XPath absoluto; preferir `data-testid`, roles o selectores CSS estables.</li>
+  <li>Ejemplo práctico:
+    <pre><code>await page.getByRole('button', { name: 'Ingresar' }).click();</code></pre>
+  </li>
+  <li>Si hay más de un elemento coincidente, usar `.first()`, `nth()` o definir selectores más específicos para evitar errores de "Strict mode violation".</li>
+</ul>
+
+<h2>Observaciones QA</h2>
+<ul>
+  <li>Verificar que los selectores resistan cambios de UI y no dependan de texto volátil.</li>
+  <li>Agregar `data-testid` en componentes críticos para tests más robustos cuando sea posible.</li>
+  <li>Comprobar accesibilidad (roles, labels) para poder utilizar `getByRole` de forma fiable.</li>
+  <li>Documentar el propósito de cada selector en el repositorio para facilitar mantenimiento por QA Automation.</li>
+</ul>
+
+<footer>
+  <p>Generado a partir de Frameworks/Playwright/Notes/selectors.md</p>
+</footer>
 
 </body>
 </html>
