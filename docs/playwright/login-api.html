@@ -47,6 +47,93 @@
   <li>Documentar el propósito de cada selector en el repositorio para facilitar mantenimiento por QA Automation.</li>
 </ul>
 
+<h2>Git Cheatsheet para QA Automation</h2>
+<h3>Estructura de ramas recomendada</h3>
+<pre><code>main
+│
+develop
+│
+├── feature/playwright-pom
+├── feature/playwright-github-actions
+├── feature/karate-crud-pets
+├── feature/karate-reporting
+└── feature/selenium-base-framework
+</code></pre>
+<hr />
+<h3>Ver información del repositorio</h3>
+<h4>Ver estado actual</h4>
+<pre><code>git status</code></pre>
+<h4>Ver rama actual</h4>
+<pre><code>git branch</code></pre>
+<h4>Ver ramas remotas</h4>
+<pre><code>git branch -r</code></pre>
+<h4>Ver todas las ramas</h4>
+<pre><code>git branch -a</code></pre>
+<hr />
+<h3>Obtener cambios del repositorio</h3>
+<h4>Descargar cambios sin fusionar</h4>
+<pre><code>git fetch</code></pre>
+<h4>Descargar y fusionar cambios</h4>
+<pre><code>git pull</code></pre>
+<h4>Actualizar develop</h4>
+<pre><code>git checkout develop
+git pull origin develop</code></pre>
+<hr />
+<h3>Crear una nueva rama feature</h3>
+<pre><code>git checkout develop
+git pull origin develop
+git checkout -b feature/karate-crud-pets</code></pre>
+<p>Verificar rama actual:</p>
+<pre><code>git branch</code></pre>
+<hr />
+<h3>Guardar cambios</h3>
+<h4>Agregar todos los archivos</h4>
+<pre><code>git add .</code></pre>
+<h4>Agregar un archivo específico</h4>
+<pre><code>git add pom.xml</code></pre>
+<h4>Crear commit</h4>
+<pre><code>git commit -m "feat: karate CRUD pets"</code></pre>
+<hr />
+<h3>Subir cambios</h3>
+<h4>Primera vez</h4>
+<pre><code>git push -u origin feature/karate-crud-pets</code></pre>
+<h4>Siguientes pushes</h4>
+<pre><code>git push</code></pre>
+<hr />
+<h3>Cambiar de rama</h3>
+<h4>Ir a develop</h4>
+<pre><code>git checkout develop</code></pre>
+<h4>Ir a main</h4>
+<pre><code>git checkout main</code></pre>
+<h4>Ir a una feature</h4>
+<pre><code>git checkout feature/karate-crud-pets</code></pre>
+<hr />
+<h3>Actualizar una feature con develop</h3>
+<pre><code>git checkout develop
+git pull origin develop
+
+git checkout feature/karate-crud-pets
+git merge develop</code></pre>
+<hr />
+<h3>Pull Request</h3>
+<p>Flujo recomendado:</p>
+<pre><code>feature/karate-crud-pets
+            ↓
+develop
+            ↓
+           main</code></pre>
+<hr />
+<h3>Eliminar ramas</h3>
+<h4>Eliminar rama local (si ya fue mergeada)</h4>
+<pre><code>git branch -d feature/karate-crud-pets</code></pre>
+<h4>Forzar eliminación local</h4>
+<pre><code>git branch -D feature/karate-crud-pets</code></pre>
+<h4>Eliminar rama remota</h4>
+<pre><code>git push origin --delete feature/karate-crud-pets</code></pre>
+<hr />
+<h3>Limpiar referencias remotas obsoletas</h3>
+<pre><code>git fetch --prune</code></pre>
+
 <footer>
   <p>Generado a partir de Frameworks/Playwright/Notes/selectors.md</p>
 </footer>
